@@ -10,7 +10,7 @@ const Nav = () => {
 
     distinct_category = [...new Set(distinct_category)];
 
-    console.log(distinct_category);
+   // console.log(distinct_category);
 
     const color = () => {
         return `rgba(${(Math.random() * 255).toFixed()}, 
@@ -19,7 +19,7 @@ const Nav = () => {
       };
       
 
-    console.log(color());
+    //console.log(color());
    
   return (
     

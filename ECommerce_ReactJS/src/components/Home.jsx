@@ -16,18 +16,19 @@ const Home = () => {
 
   const [filteredProducts, setfilteredProducts] = useState(null)
 
-  const getProductsCategory = async () =>{
-    try {
-      const {data} = await axios.get(`products/category/${category}`)
-      setfilteredProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const getProductsCategory = async () =>{
+  //   try {
+  //     const {data} = await axios.get(`products/category/${category}`)
+  //     setfilteredProducts(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   useEffect(()=>{
       if(category && category != "undefined"){
-        getProductsCategory();
+        //getProductsCategory();
+        setfilteredProducts(products.filter((p)=> p.category == category))
       }
       else{
         setfilteredProducts(products);
@@ -37,8 +38,9 @@ const Home = () => {
   return ( products?
     <>
         <Nav/>
+        
         <div className='w-[80%] p-10 pt-[5%] flex flex-wrap overflow-x-hidden overflow-y-auto  '>
-
+          
           {filteredProducts && filteredProducts.map((p,i)=>(
             <Link key={p.id} to={`/details/${p.id}`} className='mr-3 mb-3 card p-5 border shadow rounded w-[20%] h-[30vh] flex flex-col justify-center items-center'>
                 <div className='hover:scale-110 w-full h-[80%] bg-contain bg-no-repeat bg-center mb-3' 
